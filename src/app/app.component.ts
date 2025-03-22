@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SkeletonLoaderComponent } from './skeleton/skeleton-loader/skeleton-loader.component';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     CommonModule,
     SidebarComponent,
     DashboardComponent,
-   //SkeletonLoaderComponent
+    SkeletonLoaderComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
