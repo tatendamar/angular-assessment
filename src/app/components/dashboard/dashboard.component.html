@@ -46,7 +46,7 @@
           <!-- <p class="text-truncate">{{item.fullPath}}</p> -->
           <p class="text-truncate"><strong>Full Path:</strong> {{ item.fullPath }}</p>
           <p><strong>Size:</strong> {{ item.size }} bytes</p>
-          <p><strong>Extension:</strong> {{ item.extension }}</p>
+          <p><strong>Extension:</strong> {{ item.extension || 'Dir' }}</p>
           <p><strong>Type:</strong> {{ item.type }}</p>
           <p><strong>Created At:</strong> {{ item.createdAt | date:'yyyy-MM-dd' }}</p>
           <p><strong>Permissions:</strong> {{ item.permissions }}</p>
