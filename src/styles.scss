@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@import "bootstrap/scss/bootstrap";
+
+
+:root{
+  --primary-default: #F9F9F9;
+  --primary-dark: #0f0840;
+  --primary-text: #02021c;
+}
+
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
+
+}
+
+body {
+  margin: 0;
+  font-family: 'Manrope', sans-serif;
+}

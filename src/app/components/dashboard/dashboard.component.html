@@ -1,0 +1,65 @@
+<div class="container-fluid main">
+
+  <div class="d-flex justify-content-between top-text">
+    <p>Your Files & Folders</p>
+    <p class="show">Show All</p>
+  </div>
+
+
+  <app-searchbar (searchClicked)="onSearch($event)"></app-searchbar>
+
+
+
+
+  <div *ngIf="resultVm$ | async as vm">
+   <div class="info-container" *ngIf="!info; else data">
+    <div class="alert alert-info" role="alert">
+      Search your files & folders and information
+      <span>
+        <p class="text-danger">Please note the  default search path is ./</p>
+      </span>
+    </div>
+
+    <div class="alert alert-info" role="alert" *ngIf="vm.errorMsg;">
+      <p class="text-danger">No results found for path {{searchTerm}} </p>
+    </div>
+
+   </div>
+   <ng-template #data>
+    <div class="row items g-3"  >
+      <div class="col-12 col-sm-12 col-md-4 item mb-2 ms-1"
+      *ngFor="let item of vm.results | paginate: {
+        currentPage: p,
+        itemsPerPage: 6,
+      }">
+        <div class="header d-flex align-items-center justify-content-between">
+          <div class="icons-left">
+            <img class="waves" src="../../assets/images/waves.svg" alt="Feature">
+          </div>
+
+        </div>
+        <div class="title">
+          <p class="text-truncate">{{item.name}}</p>
+        </div>
+
+        <div class="content mb-lg-5 mb-md-5 mb-sm-5">
+          <!-- <p class="text-truncate">{{item.fullPath}}</p> -->
+          <p class="text-truncate"><strong>Full Path:</strong> {{ item.fullPath }}</p>
+          <p><strong>Size:</strong> {{ item.size }} bytes</p>
+          <p><strong>Extension:</strong> {{ item.extension }}</p>
+          <p><strong>Type:</strong> {{ item.type }}</p>
+          <p><strong>Created At:</strong> {{ item.createdAt | date:'yyyy-MM-dd' }}</p>
+          <p><strong>Permissions:</strong> {{ item.permissions }}</p>
+        </div>
+      </div>
+    </div>
+   </ng-template>
+
+
+  </div>
+
+
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+
+
