@@ -49,7 +49,7 @@ export class DashboardComponent {
     this.dashboardStore.loadResult({query})
 
     this.dashboardStore.results$.subscribe((results) => {
-     
+
       if(results.length > 0) {
             this.info = true;
           }
