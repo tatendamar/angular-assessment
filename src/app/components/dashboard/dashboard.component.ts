@@ -6,6 +6,7 @@ import { SearchService } from './services/search.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DashboardStore } from './store/dashboard.store';
 import { SearchResult } from './services/searchTypes.type';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class DashboardComponent {
 
 
   private readonly dashboardStore = inject(DashboardStore);
+  private readonly toastr =inject(ToastrService)
 
   resultVm$ = this.dashboardStore.vm$;
 
@@ -42,9 +44,12 @@ export class DashboardComponent {
 
     this.searchTerm = query;
 
+
+
     this.dashboardStore.loadResult({query})
 
     this.dashboardStore.results$.subscribe((results) => {
+     
       if(results.length > 0) {
             this.info = true;
           }

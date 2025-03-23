@@ -4,6 +4,7 @@ import { ComponentStore } from '@ngrx/component-store';
 import { catchError, EMPTY, switchMap, tap } from 'rxjs';
 import { SearchService } from '../services/search.service';
 import { SearchResult } from '../services/searchTypes.type';
+import { ToastrService } from 'ngx-toastr';
 
 
 export type DashboardState = {
@@ -15,6 +16,7 @@ export type DashboardState = {
 @Injectable()
 export class DashboardStore extends ComponentStore<DashboardState> {
   private searchService = inject(SearchService);
+  private readonly toastr =inject(ToastrService)
 
   constructor() {
     super({
@@ -63,6 +65,7 @@ export class DashboardStore extends ComponentStore<DashboardState> {
             },
             error: (error: HttpErrorResponse) => {
               this.setError(error.message);
+              this.toastr.error(`The path ${query} was not found`);
             },
           }),
           catchError(() => {
