@@ -2,14 +2,9 @@
 
   <div class="d-flex justify-content-between top-text">
     <p>Your Files & Folders</p>
-    <p class="show">Show All</p>
   </div>
 
-
   <app-searchbar (searchClicked)="onSearch($event)"></app-searchbar>
-
-
-
 
   <div *ngIf="resultVm$ | async as vm">
    <div class="info-container" *ngIf="!info; else data">
