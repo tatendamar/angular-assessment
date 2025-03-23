@@ -65,7 +65,7 @@ export class DashboardStore extends ComponentStore<DashboardState> {
             },
             error: (error: HttpErrorResponse) => {
               this.setError(error.message);
-              this.toastr.error(`The path ${query} was not found`);
+              this.toastr.error(`No Files & Folders Found for path ${query}`);
             },
           }),
           catchError(() => {
