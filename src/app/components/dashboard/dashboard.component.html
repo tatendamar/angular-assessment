@@ -9,9 +9,9 @@
   <div *ngIf="resultVm$ | async as vm">
    <div class="info-container" *ngIf="!info; else data">
     <div class="alert alert-info" role="alert">
-      Search your files & folders and information
+      Search your files & folders information
       <span>
-        <p class="text-danger">Please note the  default search path is ./</p>
+        <p class="text-danger">Please note the app will default to ./  current directory if no path is set</p>
       </span>
     </div>
 
