@@ -16,8 +16,8 @@ RUN npm run build
 
 FROM nginx:alpine
 
-COPY --from=build /app/dist/angular-assessment /usr/share/nginx/html
+COPY --from=build /app/dist/angular-assessment/browser /usr/share/nginx/html
 
-EXPOSE 80
+EXPOSE 4000
 
-CMD ["nginx", "-g", "deamon off;"]
+CMD ["nginx", "-g", "daemon off;"]
